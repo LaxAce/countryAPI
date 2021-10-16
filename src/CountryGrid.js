@@ -6,7 +6,7 @@ const CountryGrid = ({ countries }) => {
       {countries &&
         countries.map((country) => (
           <div className="each-country" key={country.alpha3Code}>
-            <Link to={`/details/${country.alpha3Code}`}>
+            <Link to={`/countryAPI/details/${country.alpha3Code}`}>
               <div className="country-column">
                 <img src={country.flag} alt="" width="200px" height="130px" />
                 <h2>{country.name}</h2>

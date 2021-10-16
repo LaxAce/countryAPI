@@ -1,5 +1,5 @@
 const Navbar = () => {
-  const handleTheme = (e) => {
+  const handleTheme = () => {
     let rootColor = document.documentElement;
     // console.log(rootColor);
     let moon = document.querySelector(".moon");

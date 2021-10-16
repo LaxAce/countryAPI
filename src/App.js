@@ -11,11 +11,11 @@ function App() {
 
         <div className="content">
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/countryAPI">
               <Home />
             </Route>
 
-            <Route path="/details/:id">
+            <Route path="/countryAPI/details/:id">
               <CountryDetails />
             </Route>
           </Switch>
