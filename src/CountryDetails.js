@@ -17,7 +17,7 @@ const CountryDetails = () => {
 
   return (
     <div className="details container">
-      <Link to="/countryAPI">
+      <Link to="/">
         <div className="arrow-back">
           <span>&#8592;</span> Back
         </div>
@@ -88,7 +88,7 @@ const CountryDetails = () => {
                   : countries.borders.map((border) => (
                       <div className="border-grids" key={border}>
                         <Link
-                          to={`/countryAPI/details/${
+                          to={`/details/${
                             allCountries &&
                             allCountries.filter(
                               (country) => country.alpha3Code === border
