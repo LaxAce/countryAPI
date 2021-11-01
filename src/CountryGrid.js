@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 const CountryGrid = ({ countries }) => {
   return (
     <div className="country-grid">
+      {countries && countries.status === 404 && (
+        <div className="message">Country Not Found 😒 </div>
+      )}
       {countries &&
+        countries.status !== 404 &&
         countries.map((country) => (
-          <div className="each-country" key={country.alpha3Code}>
-            <Link to={`/details/${country.alpha3Code}`}>
+          <div className="each-country" key={country._id}>
+            <Link to={`/details/${country._id}`}>
               <div className="country-column">
                 <img src={country.flag} alt="" width="200px" height="130px" />
                 <h2>{country.name}</h2>

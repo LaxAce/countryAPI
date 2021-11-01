@@ -5,12 +5,14 @@ import UseFetch from "./UseFetch";
 const CountryDetails = () => {
   let { id } = useParams();
 
-  const { countries, isPendding } = UseFetch(
-    `https://restcountries.com/v2/alpha/${id}`
+  const { countries, isPendding, error } = UseFetch(
+    `https://api-country-details.herokuapp.com/id/${id}`
   );
+  // id = countries && countries.alpha;
+  // console.log(id);
 
   function helper() {
-    return UseFetch("https://restcountries.com/v2/all");
+    return UseFetch("https://api-country-details.herokuapp.com/countries");
   }
   const a = helper();
   const allCountries = a.countries;
@@ -23,9 +25,9 @@ const CountryDetails = () => {
         </div>
       </Link>
       {isPendding && <div className="message">Loading...</div>}
-      {/* {error && <div className="message">{error} 😫</div>} */}
+      {error && <div className="message">{error} 😫</div>}
       {countries && (
-        <div className="full-details" key={countries.alpha3Code}>
+        <div className="full-details" key={countries._id}>
           <div>
             <img
               className="big-flag"
@@ -67,14 +69,14 @@ const CountryDetails = () => {
                 </div>
                 <div>
                   <label htmlFor="nativ-name">Currencies:</label>
-                  <span> {countries.currencies[0].name}</span>
+                  <span> {countries.currencies[0]}</span>
                 </div>
                 <div>
                   <label htmlFor="nativ-name">Languages:</label>
 
                   <span>
                     {" "}
-                    {countries.languages.map((lang) => lang.name).join(", ")}
+                    {countries.languages.map((lang) => lang).join(", ")}
                   </span>
                 </div>
               </div>
@@ -83,23 +85,23 @@ const CountryDetails = () => {
               <label htmlFor="border-count">Border Countries:</label>
 
               <div className="border-grid">
-                {!countries.borders
+                {countries.borders.length === 0
                   ? "None"
                   : countries.borders.map((border) => (
                       <div className="border-grids" key={border}>
                         <Link
                           to={`/details/${
                             allCountries &&
-                            allCountries.filter(
-                              (country) => country.alpha3Code === border
-                            )[0].alpha3Code
+                            allCountries?.filter(
+                              (country) => country && country.alpha === border
+                            )[0]._id
                           }`}
                         >
                           {" "}
                           <div className="border">
                             {allCountries &&
                               allCountries.filter(
-                                (country) => country.alpha3Code === border
+                                (country) => country.alpha === border
                               )[0].name}
                           </div>
                         </Link>

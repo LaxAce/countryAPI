@@ -100,8 +100,9 @@ h2 {
 
 .message {
   margin-top: 25vh;
-  margin-left: 35%;
-  font-size: 40px;
+  margin-left: 40%;
+  font-size: 30px;
+  width: 100%;
 }
 .country-grid {
   display: grid;
@@ -311,7 +312,7 @@ span {
 
   .message {
     margin-top: 15vh;
-    margin-left: 30%;
+    margin-left: 20%;
     font-size: 25px;
   }
 }
@@ -367,5 +368,8 @@ span {
 
   .border-countries label {
     margin-right: 0px;
+  }
+  .message {
+    margin-left: 20%;
   }
 }

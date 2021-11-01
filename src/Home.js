@@ -7,8 +7,8 @@ const Home = () => {
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("Filter by Region");
 
-  const { countries, isPendding } = UseFetch(
-    "https://restcountries.com/v2/all"
+  const { countries, isPendding, error } = UseFetch(
+    "https://api-country-details.herokuapp.com/countries"
   );
 
   // ============== Searched Countries =============
@@ -16,14 +16,16 @@ const Home = () => {
 
   // const [searchError, setSearchError] = useState(null);
 
-  const searchUrl = `
-  https://restcountries.com/v2/name/${country || "a"}`;
+  const searchUrl = `${
+    region === "Filter by Region"
+      ? `https://api-country-details.herokuapp.com/name/${country || "a"}`
+      : `https://api-country-details.herokuapp.com/${region}/${country}`
+  }`;
 
   useEffect(() => {
     fetch(searchUrl)
       .then((res) => {
-        if (!res.ok) throw Error("Country not found!!!");
-
+        if (!res.ok) throw Error("Country not found!!! by search");
         return res.json();
       })
       .then((data) => {
@@ -31,10 +33,7 @@ const Home = () => {
         // setSearchError(null);
       })
       .catch((err) => {
-        // setSearchError(err.message);
-
-        if (err.name.toString() === "TypeError")
-          throw new TypeError("Country not found!!...");
+        //setSearchError(err.message);
       });
   }, [searchUrl]);
 
@@ -46,7 +45,7 @@ const Home = () => {
   const [sortRegion, setSortRegion] = useState(null);
 
   const regionUrl = `
-  https://restcountries.com/v2/region/${region}`;
+  https://api-country-details.herokuapp.com/region/${region}`;
 
   useEffect(() => {
     fetch(regionUrl)
@@ -89,22 +88,21 @@ const Home = () => {
           </select>
         </div>
       </div>
-
       {isPendding && <div className="message">Loading...</div>}
-      {/* {searchError && <div className="message">{searchError} </div>} */}
-      {/* {error && <div className="message">{error} 😫</div>} */}
+
+      {error && <div className="message">{error} 😫 </div>}
 
       <CountryGrid
-        pedding={isPendding}
+        //pendding={isPendding}
         // error={error}
-        // countries={findCountries || countries}
+        // searchError={searchError}
         countries={
           (sortRegion &&
             (sortRegion.status === 404 || country !== ""
               ? false
-              : sortRegion)) ||
-          (findCountries && findCountries) ||
-          countries
+              : error === null && sortRegion)) ||
+          (findCountries && error === null && findCountries) ||
+          (error === null && countries)
         }
       />
     </div>
