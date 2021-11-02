@@ -364,11 +364,10 @@ span {
   .border-grid {
     display: grid;
     grid-template-columns: 1fr;
+    align-items: center;
+    margin-left: -8px;
   }
 
-  .border-countries label {
-    margin-right: 0px;
-  }
   .message {
     margin-left: 20%;
   }

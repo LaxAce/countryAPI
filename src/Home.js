@@ -37,9 +37,14 @@ const Home = () => {
       });
   }, [searchUrl]);
 
-  // =============== Sort by Continent =============
+  // ============== Sort by Continent =============
   const continent = [
-    ...new Set(countries && countries.map((country) => country.region)),
+    ...new Set(
+      countries &&
+        countries
+          .filter((country) => country.population > 0)
+          .map((country) => country.region)
+    ),
   ].sort();
 
   const [sortRegion, setSortRegion] = useState(null);
