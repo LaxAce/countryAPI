@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import UseFetch from "./UseFetch";
 
@@ -17,13 +17,18 @@ const CountryDetails = () => {
   const a = helper();
   const allCountries = a.countries;
 
+  // Navigate backward
+  const history = useHistory();
+  const navigateBack = () => {
+    history.go(-1);
+  };
+
   return (
     <div className="details container">
-      <Link to="/">
-        <div className="arrow-back">
-          <span>&#8592;</span> Back
-        </div>
-      </Link>
+      <div className="arrow-back" onClick={navigateBack}>
+        <span>&#8592;</span> Back
+      </div>
+
       {isPendding && <div className="message">Loading...</div>}
       {error && <div className="message">{error} 😫</div>}
       {countries && (

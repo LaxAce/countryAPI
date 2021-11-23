@@ -10,6 +10,7 @@
   --main-bg-color: hsl(207, 26%, 17%);
   --main-txt-color: hsl(0, 0%, 100%);
   --element-color: hsl(209, 23%, 22%);
+  --element-transition: none;
 }
 
 body {
@@ -17,6 +18,7 @@ body {
   color: var(--main-txt-color);
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
+  transition: var(--element-transition);
 }
 
 .container {
@@ -26,6 +28,7 @@ body {
 a {
   text-decoration: none;
   color: var(--main-txt-color);
+  transition: var(--element-transition);
 }
 
 /* -------------Navbar------------- */
@@ -40,6 +43,7 @@ h1 {
   padding: 12px 64px;
   background-color: var(--element-color);
   box-shadow: 0 5px 1px rgba(0, 0, 0, 0.022);
+  transition: var(--element-transition);
 }
 .darkTheme,
 .whiteTheme {
@@ -64,6 +68,7 @@ h1 {
   width: 400px;
   border-radius: 4px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.207);
+  transition: var(--element-transition);
 }
 
 .search-icon {
@@ -72,6 +77,7 @@ h1 {
 
 ::placeholder {
   color: var(--main-txt-color);
+  transition: var(--element-transition);
 }
 
 input,
@@ -82,6 +88,7 @@ select {
   color: var(--main-txt-color);
   padding: 16px 16px;
   border-radius: 4px;
+  transition: var(--element-transition);
 }
 
 select {
@@ -118,6 +125,7 @@ h2 {
   max-width: 200px;
   margin-right: auto;
   margin-left: auto;
+  transition: var(--element-transition);
 }
 
 .country-column img {
@@ -142,6 +150,8 @@ h2 {
   padding: 2px 24px;
   border-radius: 5px;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.193);
+  transition: var(--element-transition);
+  cursor: pointer;
 }
 .arrow-back span {
   font-size: 24px;
@@ -210,6 +220,7 @@ span {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.118);
   border-radius: 2px;
   text-align: center;
+  transition: var(--element-transition);
 }
 
 /* ==============Light Mode================= */

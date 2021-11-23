@@ -1,11 +1,15 @@
 const Navbar = () => {
   const handleTheme = () => {
+    // Transition
+    const addingTrans = "background-color 0.3s";
+
     let rootColor = document.documentElement;
-    // console.log(rootColor);
     let moon = document.querySelector(".moon");
     let lightMoon = document.querySelector(".light-moon");
     moon.classList.toggle("hidden");
     lightMoon.classList.toggle("hidden");
+
+    rootColor.style.setProperty("--element-transition", addingTrans);
 
     if (!lightMoon.classList.contains("hidden")) {
       rootColor.style.setProperty("--element-color", "hsl(0, 0%, 100%)");
