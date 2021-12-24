@@ -8,8 +8,6 @@ const CountryDetails = () => {
   const { countries, isPendding, error } = UseFetch(
     `https://api-country-details.herokuapp.com/id/${id}`
   );
-  // id = countries && countries.alpha;
-  // console.log(id);
 
   function helper() {
     return UseFetch("https://api-country-details.herokuapp.com/countries");
