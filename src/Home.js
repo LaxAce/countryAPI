@@ -98,9 +98,6 @@ const Home = () => {
       {error && <div className="message">{error} 😫 </div>}
 
       <CountryGrid
-        //pendding={isPendding}
-        // error={error}
-        // searchError={searchError}
         countries={
           (sortRegion &&
             (sortRegion.status === 404 || country !== ""
